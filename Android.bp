@@ -1,0 +1,53 @@
+cc_library_shared {
+    name: "libVrInputEvent",
+
+    srcs: [
+        "vrInputEvent.cpp"
+    ],
+
+    shared_libs: [
+    	"libutils",
+    	"libinput",
+        "libbinder"
+    ],
+
+    include_dirs: [
+        ".",
+        "frameworks/native/services/inputflinger",
+        "frameworks/native/libs/arect/include",
+        "frameworks/native/services/inputflinger/include"
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Wno-multichar",
+        "-Wno-unused-parameter",
+        //"-UNDEBUG",
+    ]
+}
+
+cc_binary {
+    name: "vrInputEvent",
+
+    srcs: [
+        "main.cpp",
+    ],
+
+    include_dirs: [
+        "."
+    ],
+
+    shared_libs: [
+    	"libVrInputEvent"
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Wno-multichar",
+        "-lrt",
+        "-Wno-unused-parameter",
+        "-Wno-unused-private-field",
+        "-Wno-unused-variable"
+        //"-UNDEBUG",
+    ]
+}
